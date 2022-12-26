@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Chat</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Chat.styles.css" asp-append-version="true" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <main role="main">
+        <div class="bootstrap snippets bootdey.com">
+            <div class="row">
+                <div class="col-md-12 padding-right-0">
+                    <div class="box">
+                        <div class="chat-room">
+                            <aside class="kiri-side">
+                                <div class="user-head">
+                                    <i class="fa fa-comments-o"></i>
+                                    <h3 id="MyUsername">My Chat</h3>
+                                </div>
+                                <ul class="chat-list margin-bottom-0">
+                                    <li>
+                                        <a class="lobby" href="javascript:void(0);">
+                                            <h4>
+                                                <i class="fa fa-list"></i>
+                                                Lobby
+                                                <i id="addChannelBtn" class="fa fa-plus pull-right"></i>
+                                            </h4>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="chat-list chatAppBody">
+                                    
+                                </ul>
+                            </aside>
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="usernameModal" tabindex="-1" aria-labelledby="usernameModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="channelCreateModalLabel">Enter Username</h5>
+                    </div>
+                    <div class="modal-body">
+                        <label>Username: </label>
+                        <input type="text" id="modal_username" required />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="usernameModal_submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="channelCreateModal" tabindex="-1" aria-labelledby="channelCreateModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="channelCreateModalLabel">Create Channel</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label>Channel Name: </label>
+                        <input type="text" id="modal_channelName" required />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="channelCreateModal_submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="border-top footer text-muted">
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/signalr/signalr.min.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
